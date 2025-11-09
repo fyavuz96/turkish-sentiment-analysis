@@ -1,84 +1,93 @@
-# Turkish Sentiment Analysis with BERT
+# Turkish Sentiment Analysis
 
-Bu proje, Türkçe ürün yorumlarını **Olumsuz (0), Olumlu (1), Nötr (2)** olarak sınıflandırmak için geliştirilmiş bir BERT tabanlı duygu analizi modelidir. Model, `dbmdz/bert-base-turkish-cased` üzerinde eğitilmiştir ve e-ticaret yorumları içeren bir veri setiyle optimize edilmiştir.
+This project is a BERT-based sentiment analysis model developed to classify Turkish product reviews as Negative (0), Positive (1), or Neutral (2). The model is built on top of **dbmdz/bert-base-turkish-cased** and optimized using a dataset containing e-commerce reviews.
 
----
+## 🚀 Features
 
-## 🚀 Özellikler
-- Türkçe metinler için BERT tabanlı duygu analizi  
-- Çok sınıflı sınıflandırma (NEG - POS - NEUTRAL)  
-- Kolay eğitilebilir modüler yapı  
-- Hazır tahmin (inference) betiği  
-- GitHub ve Kaggle portföyü için uygun  
+* BERT-based sentiment analysis for Turkish text
+* Multi-class classification (NEG, POS, NEUTRAL)
+* Modular and easy-to-train structure
+* Ready-to-use inference script
+* Suitable for GitHub and Kaggle portfolio projects
 
----
+## 📁 Project Structure
 
-## 📁 Proje Klasör Yapısı
-
+```
 turkish-sentiment-analysis/
 │
 ├── data/
-│ └── e-ticaret_urun_yorumlari.csv # Ürün yorumları veri seti
+│   └── e-ticaret_urun_yorumlari.csv     # Product review dataset
 │
-├── model/ # Eğitilmiş model ağırlıkları
+├── model/                               # Saved model weights
+├── results/                             # Training outputs (epoch logs)
+├── logs/                                # Log files
 │
-├── results/ # Training output (epoch kayıtları)
+├── train.py                             # Training script
+├── predict.py                           # Inference script
+├── utils.py                             # Dataset and helper functions
 │
-├── logs/ # Log dosyaları
-│
-├── train.py # Model eğitim dosyası
-├── predict.py # Tahmin dosyası
-├── utils.py # Dataset ve yardımcı fonksiyonlar
-├── requirements.txt # Proje bağımlılıkları
-└── README.md # Proje açıklaması
+├── requirements.txt                      # Project dependencies
+└── README.md                             # Project description
+```
 
-## 📦 Kurulum
+## 📦 Installation
+
+```
 pip install -r requirements.txt
+```
 
-## 🧠 Modeli Eğitme
+## 🧠 Training the Model
 
-Aşağıdaki komut doğrudan modeli eğitir:
+Run the following command to start training:
+
+```
 python train.py
+```
 
-Eğitim tamamlandıktan sonra model şu dizine kaydedilir:
+After training, the model will be saved here:
+
+```
 ./model/model_Content
+```
 
-## 🔍 Tahmin Alma (Prediction)
+## 🔍 Making Predictions
 
-Örnek kullanım:
+Example usage:
 
 ```python
 from predict import predict
 
 text = "Ürün kalitesi beklediğimden çok daha iyiydi."
 print(predict(text))
+```
 
-Çıktı örneği:
-Olumlu
+Sample output:
 
-| Özellik              | Değer                         |
-| -------------------- | ----------------------------- |
-| Model                | dbmdz/bert-base-turkish-cased |
-| Eğitim Epoch         | 2                             |
-| Öğrenme Oranı        | 2e-5                          |
-| Maks. Token Uzunluğu | 256                           |
-| Veri Tipi            | Türkçe e-ticaret yorumları    |
+```
+Positive
+```
 
-| Metin                                         | Tahmin  |
-| --------------------------------------------- | ------- |
-| "Kargo çok yavaş geldi, ürün hasarlıydı."     | Olumsuz |
-| "Tam göründüğü gibi, kaliteli ve kullanışlı." | Olumlu  |
-| "Fena değil, idare eder."                     | Nötr    |
+## 📊 Model Information
 
+| Feature          | Value                         |
+| ---------------- | ----------------------------- |
+| Model            | dbmdz/bert-base-turkish-cased |
+| Training Epochs  | 2                             |
+| Learning Rate    | 2e-5                          |
+| Max Token Length | 256                           |
+| Data Type        | Turkish e-commerce reviews    |
 
-🤖 Kullanılan Teknolojiler
+| Text                                          | Prediction |
+| --------------------------------------------- | ---------- |
+| "Kargo çok yavaş geldi, ürün hasarlıydı."     | Negative   |
+| "Tam göründüğü gibi, kaliteli ve kullanışlı." | Positive   |
+| "Fena değil, idare eder."                     | Neutral    |
 
-PyTorch
+## 🤖 Technologies Used
 
-HuggingFace Transformers
+* PyTorch
+* HuggingFace Transformers
+* BERT
+* Python 3.10+
 
-BERT
-
-Python 3.10+
-
-Bu proje, Türkçe NLP alanında pratik bir örnek oluşturmak, portföy/proje dosyalarını güçlendirmek ve farklı veri setleriyle model geliştirmeyi öğretmek için tasarlanmıştır.
+This project is designed as a practical example in the field of Turkish NLP, to strengthen portfolio/project showcases and demonstrate how to develop sentiment models with different datasets.
